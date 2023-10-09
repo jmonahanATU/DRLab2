@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+    import './App.css';
+    import Header from './components/header';
+    import Content from './components/content';
+    import Footer from './components/footer';
+    import 'bootstrap/dist/css/bootstrap.min.css';
+    import Container from 'react-bootstrap/Container';
+    import Nav from 'react-bootstrap/Nav';
+    import Navbar from 'react-bootstrap/Navbar';
+    import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+          <Navbar bg="primary" data-bs-theme="dark">
+            <Container>
+              <Navbar.Brand href="/">Navbar</Navbar.Brand>
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/read">Read</Nav.Link>
+                <Nav.Link href="/create">Create</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
+          <Routes>
+            <Route path='/' element={<Content />} exact />
+            <Route exact path='/create' element={<Header />} />
+            <Route path='/read' element={<Footer />} />
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
